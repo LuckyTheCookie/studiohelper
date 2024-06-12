@@ -85,20 +85,36 @@ def solver():
             os.system('pause')
             print("")
             exit()
+        
+
         print("Je vais vérifier si Java est installé et configuré correctement sur votre système.")
         if "Erreur" in get_java_info():
             print(f"{bcolors.FAIL}Il semble que Java ne soit pas installé ou configuré correctement.{bcolors.ENDC}")
             print(f"{bcolors.FAIL}Veuillez installer Java et assurez-vous qu'il est configuré correctement.{bcolors.ENDC}")
             print(f"{bcolors.FAIL}Vous pouvez télécharger Java à partir du site officiel: https://www.oracle.com/java/technologies/downloads/{bcolors.ENDC}")
-        print("")
-        print(f"{bcolors.OKGREEN}Java semble correctement installé sur votre ordinateur{bcolors.ENDC}")
+        else:
+            print("")
+            print(f"{bcolors.OKGREEN}Java semble correctement installé sur votre ordinateur{bcolors.ENDC}")
+            print("")
+
         os.system('pause')
 
 
-
-        
+        print("Je vous conseille de demander de l'aide à un modérateur pour résoudre votre problème.")
+        print("Voulez-vous que je récupère les informations nécessaires pour vous afin de faciliter l'aide apportée par un modérateur? (Y/N)")
+        print("")
+        user_input = input()
+        if user_input.lower() == "y":
+            logger()
+        else:
+            print("Je n'ai pas pu trouver de solution à votre problème...")
+            print("Veuillez contacter un modérateur pour obtenir de l'aide.")
+            print("Il est cependement FORTEMENT recommandé de récupérer les informations nécessaires pour faciliter l'aide apportée par un modérateur.")
+            print("Le programme va se fermer...")
+            exit()
     else:
         print("Le programme va se fermer... Aucune information n'a été collectée.")
+        exit()
 
 
 
