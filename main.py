@@ -89,7 +89,7 @@ def solver():
         if "Erreur" in get_java_info():
             print(f"{bcolors.FAIL}Il semble que Java ne soit pas installé ou configuré correctement.{bcolors.ENDC}")
             print(f"{bcolors.FAIL}Veuillez installer Java et assurez-vous qu'il est configuré correctement.{bcolors.ENDC}")
-            print(f"{bcolors.FAIL}Vous pouvez télécharger Java à partir du site officiel: https://www.java.com/fr/download/{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Vous pouvez télécharger Java à partir du site officiel: https://www.oracle.com/java/technologies/downloads/{bcolors.ENDC}")
         print("")
         print(f"{bcolors.OKGREEN}Java semble correctement installé sur votre ordinateur{bcolors.ENDC}")
         os.system('pause')
