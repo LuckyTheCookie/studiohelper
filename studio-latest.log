@@ -1,0 +1,8 @@
+2024-06-11 22:14:26,961 [WARN ] Ceci est un fichier de test de log pour le logiciel Studio
+
+2024-06-11 22:14:26,965 [INFO ] [studio.metadata.DatabaseMetadataService] [DatabaseMetadataService.java:56]: Reading official metadata in C:\Users\lucky\.studio\db\official.json
+2024-06-11 22:14:27,035 [INFO ] [studio.metadata.DatabaseMetadataService] [DatabaseMetadataService.java:77]: Reading unofficial database in C:\Users\lucky\.studio\db\unofficial.json
+2024-06-11 22:14:27,083 [INFO ] [studio.webui.service.StoryTellerService] [StoryTellerService.java:56]: Setting up story teller driver
+2024-06-11 22:14:27,085 [DEBUG] [studio.driver.raw.RawStoryTellerAsyncDriver] [RawStoryTellerAsyncDriver.java:65]: Registering hotplug listener
+2024-06-11 22:14:27,088 [INFO ] [studio.driver.LibUsbDetectionHelper] [LibUsbDetectionHelper.java:58]: Initializing libusb...
+
