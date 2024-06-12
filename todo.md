@@ -1,0 +1,3 @@
+- [] Régler les différents bugs 🐛
+- [] Ajouter une fonctionnalité pour poster automatiquement les logs 🚀
+- [] Améliorer l'interface graphique 🎨
