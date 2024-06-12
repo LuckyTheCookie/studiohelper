@@ -8,6 +8,19 @@ import zipfile
 from get_infos import get_system_info, get_java_info, get_studio_latest_log, get_studio_local_version, get_studio_latest_version
 from downloader import download_and_unzip_github_release
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+print(f"{bcolors.WARNING}WARNING : CE PROGRAMME EST EN COURS DE DÉVELOPPEMENT ET PEUT NE PAS FONCTIONNER CORRECTEMENT.{bcolors.ENDC}")
+
 # Fonction pour créer le fichier contenant les informations
 def create_info_file():
     with open("full-log.txt", "w") as file:
@@ -30,18 +43,18 @@ def logger():
         try:
             create_info_file()
             print("")
-            print("Nous avons récupéré les informations avec succès. Les informations ont été stockées dans le fichier full-log.txt.")
+            print("\033[92m" + "Nous avons récupéré les informations avec succès. Les informations ont été stockées dans le fichier full-log.txt.")
             print("Veuillez envoyer ce fichier sur discord pour obtenir de l'aide.")
             os.system('pause')
             exit()
         except Exception as e:
             print("Erreur: " + str(e))
-            print("Une erreur s'est produite lors de la récupération des informations.")
-            print("Veuillez suivre les instructions ci-dessous pour résoudre le problème:")
-            print("1. Assurez-vous que vous avez les permissions nécessaires pour accéder aux fichiers et dossiers. Si vous êtes sur Windows, exécutez le programme en tant qu'administrateur.")
-            print("2. Assurez-vous que le fichier studio-latest.log est présent dans le même répertoire que le programme")
-            print("3. Assurez-vous que Java est installé et configuré correctement sur votre système.")
-            print("Si vous rencontrez toujours des problèmes, veuillez contacter un modérateur pour obtenir de l'aide.")
+            print(f"{bcolors.FAIL}Une erreur s'est produite lors de la récupération des informations.{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Veuillez suivre les instructions ci-dessous pour résoudre le problème:{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}1. Assurez-vous que vous avez les permissions nécessaires pour accéder aux fichiers et dossiers. Si vous êtes sur Windows, exécutez le programme en tant qu'administrateur.{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}2. Assurez-vous que le fichier studio-latest.log est présent dans le même répertoire que le programme{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}3. Assurez-vous que Java est installé et configuré correctement sur votre système.{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Si vous rencontrez toujours des problèmes, veuillez contacter un modérateur pour obtenir de l'aide.{bcolors.ENDC}")
     else:
         print("Le programme va se fermer...")
 
@@ -59,21 +72,31 @@ def solver():
     if user_input.lower() == "y":
         print("")
         print("Je vais maintenant vérifier si vous utilisez la dernière version de STUdio.")
-
         if get_studio_local_version() == "DantSu STUdio " + get_studio_latest_version() + "\n":
-            print("Vous semblez utiliser la dernière version de STUdio.")
+            print("\033[92m" + "Vous semblez utiliser la dernière version de STUdio.")
         else:
-            print("")
-            print("Il semble que vous utilisiez une ancienne version de STUdio.")
-            print("Nous vous recommandons FORTEMENT de mettre à jour STUdio pour résoudre les problèmes que vous rencontrez.")
-            print("STUdio va s'installer automatiquement pour vous. Voulez-vous continuer? (Y/N)")
-            print("")
-            os.system('pause')
             download_and_unzip_github_release()
+            print("")
+            print(f"{bcolors.OKGREEN}STUdio a été mis à jour avec succès !{bcolors.ENDC}")
+            print(f"{bcolors.WARNING}Cependant, le travail n'est pas encore fini !")
+            print(f"Veuillez fermer ce programme et le deplacer dans le dossier contenant la nouvelle version de STUdio.")
+            print(f"Le dossier contenant la nouvelle version de STUdio est nommé studio-web-ui-{get_studio_latest_version()}.")
+            print(f"Ensuite, exécutez à nouveau ce programme pour obtenir de l'aide.{bcolors.ENDC}")
             os.system('pause')
             print("")
-            print("STUdio a été installé avec succès. Veuillez redémarrer STUdio pour appliquer les changements.")
-            os.system('pause')
+            exit()
+        print("Je vais vérifier si Java est installé et configuré correctement sur votre système.")
+        if "Erreur" in get_java_info():
+            print(f"{bcolors.FAIL}Il semble que Java ne soit pas installé ou configuré correctement.{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Veuillez installer Java et assurez-vous qu'il est configuré correctement.{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Vous pouvez télécharger Java à partir du site officiel: https://www.java.com/fr/download/{bcolors.ENDC}")
+        print("")
+        print(f"{bcolors.OKGREEN}Java semble correctement installé sur votre ordinateur{bcolors.ENDC}")
+        os.system('pause')
+
+
+
+        
     else:
         print("Le programme va se fermer... Aucune information n'a été collectée.")
 

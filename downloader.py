@@ -4,7 +4,24 @@ import zipfile
 import shutil
 from get_infos import get_studio_latest_version
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 def download_and_unzip_github_release():
+    print("")
+    print("Il semble que vous utilisiez une ancienne version de STUdio.")
+    print("Nous vous recommandons FORTEMENT de mettre à jour STUdio pour résoudre les problèmes que vous rencontrez.")
+    print("STUdio va s'installer automatiquement pour vous.")
+    print("")
+    os.system('pause')
     version = get_studio_latest_version()
     if "Erreur" in version:
         return  # Arrêter l'exécution si une erreur s'est produite lors de la récupération de la version
@@ -62,3 +79,4 @@ def download_and_unzip_github_release():
     # Suppression du fichier ZIP après extraction
     os.remove(local_filename)
     print(f"Fichier ZIP supprimé : {local_filename}")
+
