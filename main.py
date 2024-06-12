@@ -1,10 +1,6 @@
 # Importation des modules
 import os
-import platform
-import subprocess
-import requests
-import webbrowser
-import zipfile
+
 from get_infos import get_system_info, get_java_info, get_studio_latest_log, get_studio_local_version, get_studio_latest_version
 from downloader import download_and_unzip_github_release
 
@@ -34,6 +30,7 @@ def create_info_file():
 
 
 def logger():
+    print("")
     print("Ce programme va récupérer des informations sur différentes informations afin de mieux vous aider.")
     print("Ces informations serons collectées : Version de Java, Information du système d'exploitation, version de STUdio et le fichier studio-latest.log.")
     print("Voulez-vous continuer? (Y/N)")
@@ -45,6 +42,9 @@ def logger():
             print("")
             print("\033[92m" + "Nous avons récupéré les informations avec succès. Les informations ont été stockées dans le fichier full-log.txt.")
             print("Veuillez envoyer ce fichier sur discord pour obtenir de l'aide.")
+            # Copier le fichier dans le presse-papiers
+            os.system("clip < full-log.txt")
+            print(f"{bcolors.OKCYAN}Le fichier a été copié dans le presse-papiers, vous pouvez le coller directement dans discord.")
             os.system('pause')
             exit()
         except Exception as e:
@@ -115,7 +115,6 @@ def solver():
     else:
         print("Le programme va se fermer... Aucune information n'a été collectée.")
         exit()
-
 
 
 def main():
