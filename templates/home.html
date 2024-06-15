@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Helper</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <!-- Styles personnalisés -->
+    <link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="maintenance-banner to-the-center">
+    <p>SITE EN VERSION EXPERIMENTALE</p>
+</div>
+
+<!-- Header -->
+    <div class="container mt-3">
+        <h1 class="to-the-center title">STUdio Helper</h1>
+        <h2 class="to-the-center description">Bienvenue sur STUdio Helper !</h2>
+        <h3 class="to-the-center text-muted">Ce site est en développement très actif et devrait vous permettre de régler vos erreur avec STUdio</h3>
+    </div>
+
+<!-- Contenu principal -->
+<div class="container mt-3 mb-3">
+    <div class="row mt-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">    
+        <div class="col">
+            <div class="card text-center matiere-card">
+                <img class="card-img-top" src="{{ url_for('static',filename='img/tools.png') }}" alt="Card image cap" >
+                <div class="card-body">
+                    <h5 class="card-title">LOG & DEBUG</h5>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" id="createInfoFile">Create a log file</button>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<div class="container mt-5">
+    <div class="title">Avertissement</div>
+        <div class="to-the-center">
+            <p>Ces fiches de révisions ne vous garantissent en aucun cas de meilleurs résultats aux examens.<br>Elles sont fournies à but éducatif et peuvent contenir des erreurs. Je ne suis en aucun cas responsable de vos erreurs ou des erreurs qu'elles peuvent contenir.</p>
+        </div>
+        <div class="to-the-center">
+            <p>Ce site est sous license <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html#license-text">GNU GPLv3</a></p>    
+        </div>
+        <div class="to-the-center">
+            <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/LuckyTheCookie/sharefiche">Ces fiches de révisions</a> par <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://bento.me/lucasthiebaut">Lucas THIEBAUT</a> sont protégées par la license <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p> 
+        </div>
+        <div class="to-the-center">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#licenseinfo" aria-expanded="false" aria-controls="licenseinfo">
+                Plus d'infos
+            </button>
+        </div>
+
+        <div class="collapse mt-3" id="licenseinfo">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Conditions d'utilisation</h5>
+                        <p class="card-text">Vous êtes autorisé à :</p>
+                        <ul>
+                            <li><strong>Partager, copier, distribuer et communiquer le matériel par tous moyens et sous tous formats</strong></li>
+                        </ul>
+                        <p class="card-text">Selon les conditions suivantes :</p>
+                        <ol>
+                            <li>
+                                <strong>Attribution</strong> — Vous devez créditer l'œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'œuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'offrant vous soutient ou soutient la façon dont vous avez utilisé son œuvre.
+                            </li>
+                            <li>
+                                <strong>Pas d’Utilisation Commerciale</strong> — Vous n'êtes pas autorisé à faire un usage commercial de cette œuvre, tout ou partie du matériel la composant.
+                            </li>
+                            <li>
+                                <strong>Pas de modifications</strong> — Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l'œuvre originale, vous n'êtes pas autorisé à distribuer ou mettre à disposition l'œuvre modifiée.
+                            </li>
+                            <li>
+                                <strong>Pas de restrictions complémentaires</strong> — Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Œuvre dans les conditions décrites par la licence.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+        </div>
+</div>
+
+<!-- MODULES COMPLEMENTAIRES -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="to-the-center modal-title fs-5" id="staticBackdropLabel">VEUILLEZ LIRE CE TEXTE ATTENTIVEMENT S'IL VOUS PLAIT</h1>
+        </div>
+        <div class="modal-body">
+            <p>En utilisant ce site, vous comprenez que :</p>
+            <ul>
+                <li>Ces fiches de révisions ne vous garantissent pas forcément de meilleurs résultats aux examens.</li>
+                <li>Elles sont fournies à but éducatif et <strong>peuvent contenir des erreurs.</strong></li>
+                <li><strong>Je ne suis en aucun cas responsable de vos erreurs ou des erreurs qu'elles peuvent contenir.</strong></li>
+            </ul>
+            <p>Ce site est sous license <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html#license-text">GNU GPLv3</a></p>
+            <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/LuckyTheCookie/sharefiche">Ces fiches de révisions</a> par <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://bento.me/lucasthiebaut">Lucas THIEBAUT</a> sont protégées par la license <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p> 
+        </div>
+        <div class="modal-footer">
+          <p>En fermant cette fenêtre, vous acceptez les conditions d'utilisation de ce site.</p>
+          <p class="text-muted" id="modalWaitingText">Vous devez patienter 10 secondes avant de fermer cet avertissement</p>
+          <button id="modalCloseBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button id="modalUnderstoodBtn" type="button" class="btn btn-primary">Ne plus afficher</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<button id="modalTriggerBtn" style="display: none;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    AUTO LAUNCH MODAL - DO NOT REMOVE
+</button>
+
+
+<!-- SCRIPTS -->
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="{{ url_for('static',filename='scripts/post.js') }}"></script>
+</body>
+</html>
+
