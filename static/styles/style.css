@@ -176,3 +176,9 @@ a {
     font-size: 15px;
     font-weight: bold;
 }
+
+.text {
+    font-size: 17px;
+    color:rgb(50, 50, 50);
+    font-weight: bold;
+}
