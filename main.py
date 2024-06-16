@@ -1,3 +1,4 @@
+from flask import Flask, render_template, request, jsonify
 import os
 from get_infos import (
     get_system_info,
@@ -18,6 +19,9 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
+class SolverInterruptedException(Exception):
+    pass
 
 def create_info_file():
     with open("full-log.txt", "w") as file:
@@ -50,6 +54,7 @@ def logger():
                   "Si vous rencontrez toujours des problèmes, veuillez contacter un modérateur pour obtenir de l'aide.")
     else:
         print("Le programme va se fermer...")
+
 
 def solver():
     print("\nIl semble que vous ayez un problème avec STUdio. Je suis là pour vous aider !\n"
@@ -84,7 +89,8 @@ def solver():
             exit()
     else:
         print("Le programme va se fermer... Aucune information n'a été collectée.")
-        exit()
+        print(f"{bcolors.FAIL}Veuillez rouvrir votre navigateur afin de continuer s'il vous plait{bcolors.ENDC}")
+        return jsonify({'status': 'error', 'message': 'Solver has been cancelled'})
 
 def main():
     print("Bienvenue dans le programme de récupération d'informations sur STUdio.\n"
