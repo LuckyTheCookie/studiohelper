@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 import os
 from get_infos import get_system_info, get_java_info, get_studio_latest_log, get_studio_local_version, get_studio_latest_version
-from downloader import download_and_unzip_github_release
 from solver import solver
+from autoupdater import check_studio_update
 import webbrowser
 
 app = Flask(__name__)
@@ -47,6 +47,8 @@ def solver_accept():
             return jsonify({'status': 'error', 'message': message})
         elif "requires manual intervention" in message.lower():
             return jsonify({'status': 'reload', 'message': message})
+        elif "java is not installed or configured correctly" in message.lower():
+            return jsonify({'status': 'java', 'message': message})
         else:
             return jsonify({'status': 'success', 'message': message})
     except Exception as e:
@@ -77,6 +79,7 @@ if __name__ == "__main__":
 ███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝    ██║  ██║███████╗███████╗██║     ███████╗██║  ██║\n\
 ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝{bcolors.ENDC}")
     
+    check_studio_update()
     print(f"{bcolors.OKGREEN}Server started on http://localhost:5241{bcolors.ENDC}")
     webbrowser.open("http://localhost:5241")
     from waitress import serve
