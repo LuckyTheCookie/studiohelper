@@ -46,12 +46,13 @@ def solver():
             print(f"{bcolors.FAIL}Veuillez rouvrir votre navigateur afin de continuer s'il vous plait{bcolors.ENDC}")
             raise SolverInterruptedException("Solver requires manual intervention. Please restart the program.")
 
-        if "Erreur" in get_java_info():
-            print(f"{bcolors.FAIL}Il semble que Java ne soit pas installé ou configuré correctement.\n"
-                  "Veuillez installer Java et assurez-vous qu'il est configuré correctement.\n"
-                  "Vous pouvez télécharger Java à partir du site officiel: https://www.oracle.com/java/technologies/downloads/")
-        else:
+        if 'java version "21' or 'java version "22' or "java 21" or "java 22" in get_java_info():
             print(f"{bcolors.OKGREEN}Java semble correctement installé sur votre ordinateur{bcolors.ENDC}\n")
+        else:
+            print(f"{bcolors.FAIL}Il semble que Java ne soit pas installé, configuré correctement, ou que vous utilisiez une ancienne version de Java.\n"
+                  "Veuillez installer Java et assurez-vous qu'il est configuré correctement.\n"
+                  "Vous pouvez télécharger Java en retournant sur votre navigateur ou à partir du site officiel: https://www.oracle.com/java/technologies/downloads/")
+            raise SolverInterruptedException("Java is not installed or configured correctly.")            
         
         print(f"{bcolors.FAIL}Veuillez rouvrir votre navigateur afin de continuer s'il vous plait{bcolors.ENDC}")
         return "Solver finished successfully."

@@ -33,6 +33,9 @@ $(function() {
             } else if (data.status === 'reload') {
                 $('#solverWaitingStep').hide();
                 $('#solverReloadStep').show();
+            } else if (data.status === 'java') {
+                $('#solverWaitingStep').hide();
+                $('#solverJavaStep').show();
             }
         });
         $('#solverFirstStep').hide();
