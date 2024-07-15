@@ -55,7 +55,7 @@ $(function() {
         });
     });
 
-    $('#solverRetry').click(function() {
+    $('.solverRetry').click(function() {
         // Recharger la page
         window.location.reload();
     }
